@@ -1,28 +1,53 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>تحميل اللعبة</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Your Game</title>
 
-    <!-- OGAds Content Locker -->
-    <script type="text/javascript" src="https://applocked.org/js/27lnol-y.js"></script>
+<style>
+body {
+    background: #111;
+    color: #fff;
+    text-align: center;
+    font-family: Arial;
+    padding: 40px;
+}
+.box {
+    background: #222;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: auto;
+}
+button {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+</style>
 
-    <style>
-        body {
-            background: #121212;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding-top: 80px;
-        }
-    </style>
+<!-- OGAds Content Locker -->
+<script type="text/javascript">
+var ogblock_settings = {
+    campaign_id: "27lnol",
+};
+</script>
+<script src="https://redirectapps.org/cl/js/ogblock.js"></script>
+
 </head>
-
 <body>
 
-    <h2>المرجو الانتظار لحظة…</h2>
-    <p>سيتم فتح التحميل بعد إتمام خطوة التحقق.</p>
+<div class="box">
+    <h2>Download Your Game</h2>
+    <p>Complete one offer to unlock the download.</p>
+
+    <button onclick="ogblock_show()">Unlock Now</button>
+</div>
 
 </body>
 </html>
