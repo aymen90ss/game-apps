@@ -1,65 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instructions</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f8f8f8;
-            margin: 0;
-            padding: 20px;
-            line-height: 1.7;
-        }
-        .container {
-            max-width: 700px;
-            margin: auto;
-            padding: 20px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-        ul {
-            padding-left: 18px;
-        }
-        .btn {
-            display: block;
-            text-align: center;
-            margin-top: 25px;
-            padding: 12px 0;
-            background: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 18px;
-        }
-        .btn:hover {
-            background: #005fcc;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Instructions — Open in Browser</title>
+  <style>
+    :root{--bg:#f2f4f7;--card:#fff;--accent:#ffca28;--accent-dark:#f5b21c;--text:#222}
+    html,body{height:100%;margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
+    .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:20px}
+    .card{width:100%;max-width:420px;background:var(--card);border-radius:14px;padding:24px;box-shadow:0 8px 30px rgba(0,0,0,.08);text-align:center}
+    h1{font-size:20px;margin:0 0 10px}
+    p{margin:0 0 16px;color:#444}
+    ul{text-align:left;padding-left:20px;margin:0 0 18px;color:#444}
+    .btn{display:inline-block;width:100%;padding:13px 16px;border-radius:10px;background:var(--accent);color:#111;text-decoration:none;font-weight:700;border:none;cursor:pointer;font-size:17px}
+    .btn:active{transform:translateY(1px)}
+    .small{font-size:13px;color:#666;margin-top:12px}
+  </style>
 </head>
 <body>
+  <div class="wrap">
+    <div class="card" role="main">
+      <h1>Open in External Browser</h1>
+      <p>To access the game download page and complete the short verification, please open the site in your device browser.</p>
 
-<div class="container">
-    <h1>Instructions</h1>
+      <ul>
+        <li>Tap the button below.</li>
+        <li>If prompted, choose "Open in Browser" or allow opening in your default browser.</li>
+        <li>Complete the short verification to reach the download link.</li>
+      </ul>
 
-    <p>Please follow the steps below to access the game download page:</p>
+      <button id="openBtn" class="btn" aria-label="Open in Browser">Open in Browser</button>
 
-    <ul>
-        <li>Click the button below to continue.</li>
-        <li>You may be asked to complete a simple verification step.</li>
-        <li>After completing the verification, you will be redirected to the game download page.</li>
-        <li>Choose your game and click the download button.</li>
-        <li>If a small offer or task appears, complete it to unlock the download.</li>
-    </ul>
+      <div class="small">If the button doesn't work, copy & paste this link into your browser:<br>
+        <a href="https://aymen90ss.github.io/game-apps/" target="_blank" rel="noopener noreferrer">https://aymen90ss.github.io/game-apps/</a>
+      </div>
+    </div>
+  </div>
 
-    <a class="btn" href="index.html">Continue</a>
-</div>
+  <script>
+    (function(){
+      const target = 'https://aymen90ss.github.io/game-apps/';
+      const btn = document.getElementById('openBtn');
 
+      function tryOpenExternal(url){
+        // First attempt: open new tab/window
+        const opened = window.open(url, '_blank', 'noopener,noreferrer');
+        if (opened) {
+          try { opened.focus(); } catch(e){}
+          return true;
+        }
+
+        // Fallback: try setting location (may stay inside WebView)
+        try {
+          window.location.href = url;
+          return true;
+        } catch(e){}
+
+        return false;
+      }
+
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        // On Android TikTok WebView, intent scheme sometimes works — try it then normal open
+        const isAndroid = /Android/i.test(navigator.userAgent);
+        const isTikTok = /TikTok/i.test(navigator.userAgent) || /com.zhiliaoapp.musically/i.test(navigator.userAgent);
+
+        if (isAndroid && isTikTok) {
+          // attempt intent (may prompt to open browser)
+          const intentUrl = 'intent://' + target.replace(/^https?:\/\//,'') + '#Intent;scheme=https;package=com.android.chrome;end';
+          try {
+            window.location.href = intentUrl;
+            // small timeout to fallback in case intent not supported
+            setTimeout(() => tryOpenExternal(target), 600);
+            return;
+          } catch(e){}
+        }
+
+        tryOpenExternal(target);
+      });
+
+      // Optional: allow tap anywhere on card to trigger
+      document.querySelector('.card').addEventListener('click', function(ev){
+        // ignore clicks on links
+        if(ev.target.tagName.toLowerCase() === 'a' || ev.target.id === 'openBtn') return;
+        btn.click();
+      });
+    })();
+  </script>
 </body>
 </html>
