@@ -1,50 +1,67 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>تعليمات الدخول</title>
-<style>
-    body {
-        font-family: sans-serif;
-        background: #f2f2f2;
-        text-align: center;
-        padding: 30px;
-    }
-    .box {
-        background: #ffffff;
-        padding: 25px;
-        border-radius: 20px;
-        max-width: 350px;
-        margin: auto;
-        box-shadow: 0 0 12px rgba(0,0,0,0.12);
-    }
-    button {
-        background: #ffcc00;
-        padding: 15px;
-        border: none;
-        border-radius: 12px;
-        font-size: 18px;
-        cursor: pointer;
-        width: 100%;
-        margin-top: 15px;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructions</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .box {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            width: 85%;
+            max-width: 400px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            margin: 0 0 15px 0;
+            font-size: 22px;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 25px;
+            color: #444;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            background: #ffca28;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #f5b91f;
+        }
+    </style>
 </head>
 <body>
 
-<div class="box">
-    <h3>👇 Please follow the instructions 👇</h3>
-    <p>اضغط على الزر أسفله لفتح الموقع في المتصفح الخارجي</p>
-
-    <button onclick="openBrowser()">فتح في المتصفح</button>
-</div>
-
-<script>
-function openBrowser() {
-    window.location.href = "https://aymen90ss.github.io/game-apps/";
-}
-</script>
+    <div class="box">
+        <h2>👇 Please follow the instructions 👇</h2>
+        <p>Click the button below to open the website in your external browser.</p>
+        
+        <button onclick="window.location.href='https://aymen90ss.github.io/game-apps/';">
+            Open in Browser
+        </button>
+    </div>
 
 </body>
 </html>
