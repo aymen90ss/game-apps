@@ -6,62 +6,60 @@
     <title>Instructions</title>
     <style>
         body {
-            margin: 0;
             font-family: Arial, sans-serif;
-            background: #f2f2f2;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            background: #f8f8f8;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.7;
         }
-
-        .box {
+        .container {
+            max-width: 700px;
+            margin: auto;
+            padding: 20px;
             background: white;
-            padding: 25px;
             border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
             text-align: center;
-            width: 85%;
-            max-width: 400px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-        }
-
-        h2 {
-            margin: 0 0 15px 0;
-            font-size: 22px;
-        }
-
-        p {
-            font-size: 16px;
             margin-bottom: 25px;
-            color: #444;
         }
-
-        button {
-            width: 100%;
-            padding: 12px;
-            font-size: 18px;
-            background: #ffca28;
-            border: none;
+        ul {
+            padding-left: 18px;
+        }
+        .btn {
+            display: block;
+            text-align: center;
+            margin-top: 25px;
+            padding: 12px 0;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
             border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
+            font-size: 18px;
         }
-
-        button:hover {
-            background: #f5b91f;
+        .btn:hover {
+            background: #005fcc;
         }
     </style>
 </head>
 <body>
 
-    <div class="box">
-        <h2>👇 Please follow the instructions 👇</h2>
-        <p>Click the button below to open the website in your external browser.</p>
-        
-        <button onclick="window.location.href='https://aymen90ss.github.io/game-apps/';">
-            Open in Browser
-        </button>
-    </div>
+<div class="container">
+    <h1>Instructions</h1>
+
+    <p>Please follow the steps below to access the game download page:</p>
+
+    <ul>
+        <li>Click the button below to continue.</li>
+        <li>You may be asked to complete a simple verification step.</li>
+        <li>After completing the verification, you will be redirected to the game download page.</li>
+        <li>Choose your game and click the download button.</li>
+        <li>If a small offer or task appears, complete it to unlock the download.</li>
+    </ul>
+
+    <a class="btn" href="index.html">Continue</a>
+</div>
 
 </body>
 </html>
